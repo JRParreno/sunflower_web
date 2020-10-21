@@ -1,0 +1,62 @@
+{% extends 'letter/base.html' %} {% block content %}
+<input id="letter_url" type="hidden" value="{% url 'sunflower:letter' %}" />
+<div class="row h-100 justify-content-center align-items-center m-0">
+  <div class="col-sm-9 col-md-7 col-lg-12 mx-auto">
+    <div class="card my-5 border-0" style="background-color: transparent">
+      <div class="card-body my-5">
+        <div class="card-title font-weight-bold font-italic text-center">
+          <span class="mb-5 head-greeting">HAPPY BIRTHDAY {{name}}!</span>
+        </div>
+        <div class="card-subtitle text-center">
+          <span class="sub-greeting">I HOPE YOU LIKE IT!</span>
+        </div>
+        <div class="col-lg-8 col-sm-12 col-md-8 mx-auto mt-5 text-center">
+          <span id="percentage" class="text-white">0%</span>
+          <div class="progress progress-height">
+            <div
+              id="myBar"
+              class="progress-bar bg-warning border-2"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <span class="text-white">Please wait</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var i = 0;
+  function changePercentage() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById("myBar");
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+          setTimeout(function () {
+            window.location.href = $("#letter_url").val();
+          }, 3000);
+        } else {
+          width++;
+          elem.style.width = width + "%";
+          $("#percentage").text(width + "%");
+        }
+      }
+    }
+  }
+
+  $(function () {
+    document.body.style.backgroundColor = "#4169e1";
+    changePercentage();
+  });
+</script>
+{% endblock content %}

@@ -1,0 +1,29 @@
+.border-3 {
+  border: 2px solid black !important;
+}
+
+.custom-btn {
+  border: 20px solid black;
+  background-color: white;
+  color: black;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10%;
+}
+
+.custom-text {
+  color: black;
+}
+
+input,
+select,
+textarea {
+  color: #ffffff !important;
+}
+
+textarea:focus,
+input:focus {
+  color: #ffffff !important;
+  background-color: rgb(64, 3, 100) !important;
+}
